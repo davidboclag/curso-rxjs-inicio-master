@@ -29,13 +29,17 @@ const subs1 = intervalo$.subscribe(observer);
 const subs2 = intervalo$.subscribe(observer);
 const subs3 = intervalo$.subscribe(observer);
 
-const allSubs = new Subscription()
-allSubs.add(subs1);
-allSubs.add(subs2);
-allSubs.add(subs3)
+subs1.add(subs2)
+subs2.add(subs3)
+
+// const allSubs = new Subscription()
+// allSubs.add(subs1);
+// allSubs.add(subs2);
+// allSubs.add(subs3)
 
 setTimeout(() => {
-    allSubs.unsubscribe();
+    // allSubs.unsubscribe();
+    subs1.unsubscribe();
     // subs1.unsubscribe();
     // subs2.unsubscribe();
     // subs3.unsubscribe();
